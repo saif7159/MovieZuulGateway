@@ -1,0 +1,16 @@
+server:
+  port: 8762
+eureka:  client:    serviceUrl:
+     defaultZone: http://localhost:8761/eureka
+spring:  application:    name: movie-zuul
+zuul:
+  ignored-services: '*'
+  routes:
+    movie-service:
+      path: /movies/**
+      service-id: movie-service
+    rental-service:
+      path: /rental/**
+      service-id: rental-service               user-service:
+      path: /user/**
+      service-id: user-service    
